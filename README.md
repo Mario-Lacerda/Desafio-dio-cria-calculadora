@@ -1,37 +1,65 @@
 # Desafio-dio-cria-calculadora
 Desafio dio cria calculadora
-Programa em Ruby para Solicitar Nome Completo e Idade do Usuário
-Vamos criar um simples programa em Ruby que solicita o nome completo e a idade do usuário e, em seguida, exibe essas informações na tela.
+Programa em Ruby para Cálculos com Escolhas do Usuário
+Vamos criar um programa em Ruby que apresenta ao usuário uma lista de operações matemáticas e realiza o cálculo com base na escolha do usuário.
 
 Código do Programa
 Aqui está um exemplo de como você pode escrever esse programa:
 
-# Solicita o nome completo do usuário
-puts "Por favor, digite seu nome completo:"
-nome_completo = gets.chomp
+# Função para realizar as operações
+def calcular(opcao, num1, num2)
+  case opcao
+  when 1
+    num1 + num2
+  when 2
+    num1 - num2
+  when 3
+    num1 * num2
+  when 4
+    num1 / num2
+  else
+    "Opção inválida!"
+  end
+end
 
-# Solicita a idade do usuário
-puts "Por favor, digite sua idade:"
-idade = gets.chomp
+# Apresenta a lista de escolhas
+puts "Escolha uma operação:"
+puts "1. Adição"
+puts "2. Subtração"
+puts "3. Multiplicação"
+puts "4. Divisão"
 
-# Exibe a saída
-puts "Seu nome completo é: #{nome_completo} e você tem #{idade} anos."
+# Lê a escolha do usuário
+print "Digite o número da operação: "
+opcao = gets.chomp.to_i
+
+# Lê os números
+print "Digite o primeiro número: "
+num1 = gets.chomp.to_f
+
+print "Digite o segundo número: "
+num2 = gets.chomp.to_f
+
+# Realiza o cálculo e exibe o resultado
+resultado = calcular(opcao, num1, num2)
+puts "O resultado é: #{resultado}"
 Explicação do Código
-puts: Este comando exibe uma mensagem na tela.
-gets.chomp: Este comando lê a entrada do usuário e remove a quebra de linha ao final.
-#{nome_completo} e #{idade}: Esta é a interpolação de strings, que permite incluir variáveis dentro de uma string.
+Função calcular: Recebe a opção e os dois números, realizando a operação correspondente.
+case: Estrutura que verifica qual operação o usuário escolheu.
+gets.chomp: Lê a entrada do usuário e remove a quebra de linha.
+to_i e to_f: Convertem a entrada para inteiro e float, respectivamente.
 Como Executar o Programa
-Crie um arquivo Ruby chamado usuario_info.rb:
+Crie um arquivo Ruby chamado calculadora.rb:
 
-touch usuario_info.rb
+touch calculadora.rb
 Abra o arquivo em um editor de texto e cole o código acima.
 
 Execute o programa no terminal:
 
-ruby usuario_info.rb
-Siga as instruções na tela para fornecer seu nome completo e idade.
+ruby calculadora.rb
+Siga as instruções na tela para escolher a operação e inserir os números.
 
 Exemplo de Saída
-Se você executar o programa e inserir, por exemplo, "João da Silva" como nome completo e "30" como idade, a saída será:
+Se você escolher a opção de adição e inserir os números 5 e 10, a saída será:
 
-Seu nome completo é: João da Silva e você tem 30 anos.
+O resultado é: 15.0
